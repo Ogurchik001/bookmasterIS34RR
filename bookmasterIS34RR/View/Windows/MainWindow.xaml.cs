@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using bookmasterIS34RR.Models;
+using bookmasterIS34RR.View.Pages;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +21,42 @@ namespace bookmasterIS34RR
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void LoginMI_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LogoutMI_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseMI_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BrowseCatalogMI_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new BrowseCatalogPage());
+        }
+
+        private void ManageCustomerMI_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CirculationMI_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReportsMI_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
