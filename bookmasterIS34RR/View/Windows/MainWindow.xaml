@@ -17,7 +17,7 @@
         <Menu>
             <MenuItem Header="Файл">
                 <MenuItem Name="LoginMI" Header="Ввох в систему" Click="LoginMI_Click"/>
-                <MenuItem Name="LogoutMI" Header="Выход из системы" Click="LogoutMI_Click"/>
+                <MenuItem Name="LogoutMI" Header="Выход из системы" Visibility="Collapsed" Click="LogoutMI_Click"/>
                 <MenuItem Name="CloseMI" Header="Закрыть приложение" Click="CloseMI_Click"/>
             </MenuItem>
             <MenuItem Header="Библиотека">
