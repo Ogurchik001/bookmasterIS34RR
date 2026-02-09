@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:bookmasterIS34RR.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="BrowseCatalogPage">
+      Title="BrowseCatalogPage" Background="White" Height="1005" Width="1920">
 
     <Grid>
           
