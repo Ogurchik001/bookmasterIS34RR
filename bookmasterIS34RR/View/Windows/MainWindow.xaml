@@ -5,9 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bookmasterIS34RR"
         mc:Ignorable="d"
-       Title="Bookmaster3000" Height="720" Width="1280" WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+       Title="Bookmaster3000" Height="1080" Width="1920" 
+        WindowStartupLocation="CenterScreen"
+        MinHeight="720" MinWidth="1280">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Файл">
+                <MenuItem Name="LoginMI" Header="Ввох в систему" Click="LoginMI_Click"/>
+                <MenuItem Name="LogoutMI" Header="Выход из системы" Click="LogoutMI_Click"/>
+                <MenuItem Name="CloseMI" Header="Закрыть приложение" Click="CloseMI_Click"/>
+            </MenuItem>
+            <MenuItem Header="Библиотека">
+                <MenuItem Name="BrowseCatalogMI" Header="Каталог книг" Visibility="Collapsed" Click="BrowseCatalogMI_Click"/>
+                <MenuItem Name="ManageCustomerMI" Header="Клиенты" Click="ManageCustomerMI_Click"/>
+                <MenuItem Name="CirculationMI" Header="История книг" Click="CirculationMI_Click"/>
+                <MenuItem Name="ReportsMI" Header="Отчет" Click="ReportsMI_Click"/>
+            </MenuItem>
+        </Menu>
+        <Frame Name="MainFrame" Grid.Row="2"/>
     </Grid>
-    </Window>
+</Window>
