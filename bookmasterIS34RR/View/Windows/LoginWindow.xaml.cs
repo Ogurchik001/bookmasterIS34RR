@@ -23,5 +23,10 @@ namespace bookmasterIS34RR.View.Windows
         {
             InitializeComponent();
         }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

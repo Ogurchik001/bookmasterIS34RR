@@ -9,7 +9,7 @@ namespace bookmasterIS34RR
     /// </summary>
     public partial class App : Application
     {
-        
+
     }
 
 }
