@@ -1,5 +1,7 @@
-﻿using bookmasterIS34RR.Models;
+﻿using bookmasterIS34RR.AppData;
+using bookmasterIS34RR.Models;
 using bookmasterIS34RR.View.Pages;
+using bookmasterIS34RR.View.Windows;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,17 +28,25 @@ namespace bookmasterIS34RR
 
         private void LoginMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            if (authorizationWindow.ShowDialog()==true)
+            {
+                LibraryMI.Visibility= Visibility.Visible;
+                LoginMI.Visibility = Visibility.Collapsed;
+                LogoutMI.Visibility = Visibility.Visible;
+            }
         }
 
         private void LogoutMI_Click(object sender, RoutedEventArgs e)
         {
-
+            LibraryMI.Visibility = Visibility.Collapsed;
+            LoginMI.Visibility = Visibility.Collapsed;
+            LogoutMI.Visibility = Visibility.Visible;
         }
 
         private void CloseMI_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void BrowseCatalogMI_Click(object sender, RoutedEventArgs e)
@@ -44,18 +54,20 @@ namespace bookmasterIS34RR
             MainFrame.Navigate(new BrowseCatalogPage());
         }
 
-        private void ManageCustomerMI_Click(object sender, RoutedEventArgs e)
+        private void ManageCustomersMI_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate( new ManageCustomersPage());
         }
 
         private void CirculationMI_Click(object sender, RoutedEventArgs e)
         {
+            MainFrame.Navigate(new CirculationPage());
 
         }
 
         private void ReportsMI_Click(object sender, RoutedEventArgs e)
         {
+            MainFrame.Navigate(new ReportsPage());
 
         }
     }
