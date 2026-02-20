@@ -25,8 +25,9 @@
                 <MenuItem Name="ManageCustomerMI" Header="Управление читателями" Click="ManageCustomersMI_Click"/>
                 <MenuItem Name="CirculationMI" Header="Управление абонементом" Click="CirculationMI_Click"/>
                 <MenuItem Name="ReportsMI" Header="Отчет" Click="ReportsMI_Click"/>
+                
             </MenuItem>
         </Menu>
-        <Frame Name="MainFrame" Grid.Row="2"/>
+        <Frame Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
