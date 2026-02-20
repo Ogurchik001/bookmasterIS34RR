@@ -21,7 +21,7 @@
                 <MenuItem Name="CloseMI" Header="Закрыть приложение" Click="CloseMI_Click"/>
             </MenuItem>
             <MenuItem Header="Библиотека" Visibility="Collapsed" Name="LibraryMI">
-                <MenuItem Name="BrowseCatalogMI" Header="Просмотр каталога" Visibility="Collapsed" Click="BrowseCatalogMI_Click"/>
+                <MenuItem Name="BrowseCatalogMI" Header="Просмотр каталога"  Click="BrowseCatalogMI_Click"/>
                 <MenuItem Name="ManageCustomerMI" Header="Управление читателями" Click="ManageCustomersMI_Click"/>
                 <MenuItem Name="CirculationMI" Header="Управление абонементом" Click="CirculationMI_Click"/>
                 <MenuItem Name="ReportsMI" Header="Отчет" Click="ReportsMI_Click"/>
