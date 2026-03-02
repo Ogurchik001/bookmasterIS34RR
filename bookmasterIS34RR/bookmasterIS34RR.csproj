@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <None Remove="Resources\booklogo.jpg" />
-    <None Remove="Resources\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,7 +33,6 @@
 
   <ItemGroup>
     <Resource Include="Resources\booklogo.jpg" />
-    <Resource Include="Resources\logo.png" />
   </ItemGroup>
 
 </Project>
