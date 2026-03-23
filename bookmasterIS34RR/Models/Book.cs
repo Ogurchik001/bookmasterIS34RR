@@ -15,6 +15,25 @@ public partial class Book
 
     public string? Description { get; set; }
 
+    public string Authors
+    {
+        get
+        {
+            //фамилии авторов через запятую
+            return string.Join(", ",BookAuthors.Select(a=>a.Author.Name));
+            
+        }
+    }
+    public string Subjects
+    {
+        get
+        {
+            //Жанры авторов через запятую
+            return string.Join(", ", BookSubjects.Select(a => a.Subject.Title));
+
+        }
+    }
+
     public virtual ICollection<BookAuthor> BookAuthors { get; set; } = new List<BookAuthor>();
 
     public virtual ICollection<BookCover> BookCovers { get; set; } = new List<BookCover>();

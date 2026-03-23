@@ -28,5 +28,10 @@ namespace bookmasterIS34RR.View.Windows
         {
             DialogResult = true;
         }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

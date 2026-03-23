@@ -38,7 +38,7 @@ public partial class BookmasterEgorRis34Context : DbContext
     public virtual DbSet<Subject> Subjects { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=Win10\\SQLEXPRESS; Database=bookmasterEgorRIS34; Trusted_Connection=true; TrustServerCertificate=true;");
+        => optionsBuilder.UseLazyLoadingProxies().UseSqlServer("Server=Win10\\SQLEXPRESS; Database=bookmasterEgorRIS34; Trusted_Connection=true; TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

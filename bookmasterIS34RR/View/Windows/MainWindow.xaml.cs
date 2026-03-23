@@ -23,8 +23,9 @@ namespace bookmasterIS34RR
         public MainWindow()
         {
             InitializeComponent();
-
-            MainFrame.Navigate(new BrowseCatalogPage());
+           
+                MainFrame.Navigate(new BrowseCatalogPage());
+          
         }
 
         private void LoginMI_Click(object sender, RoutedEventArgs e)
