@@ -24,7 +24,7 @@ namespace bookmasterIS34RR.View.Pages
     public partial class BrowseCatalogPage : Page
     {
         //Создаем локальный список для единоразового вытягивания данных из таблицы БД
-        private readonly List<Book> _books;
+        private  List<Book> _books;
         private Book _selectedBook;
 
         public BrowseCatalogPage()
@@ -37,16 +37,36 @@ namespace bookmasterIS34RR.View.Pages
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
+            SearchResoultsGrid.Visibility = Visibility.Visible;
 
+            string bookTitle = BookTitleTb.Text;
+            string bookAuthors = BookAuthorsTb.Text;
+            string bookSubjects = BookSubjectsTb.Text;
+
+            if (string.IsNullOrWhiteSpace(bookTitle) &&
+                string.IsNullOrWhiteSpace(bookAuthors) && 
+                string.IsNullOrWhiteSpace(bookSubjects) )  
+            {
+                LoadData(_books);
+            }
+            else 
+            {
+
+                _books = _books.Where(book => book.Title.Contains(bookTitle, StringComparison.OrdinalIgnoreCase) && book.Authors.Contains(bookTitle, StringComparison.OrdinalIgnoreCase) && book.Subjects.Contains(bookTitle, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                LoadData(filteredBooks);
+            }
+
+            
         }
 
         private void PreviousPageBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void LoadData()
+        private void LoadData(List<Book> bookList)
         {
-           BookAuthorLv.ItemsSource = _books;
+           BookAuthorsLv.ItemsSource = bookList;
         }
         private void NextCoverBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -61,8 +81,17 @@ namespace bookmasterIS34RR.View.Pages
 
         private void BookAuthorLv_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            _selectedBook = (Book)BookAuthorLv.SelectedItem;
-            BookDetailGrid.DataContext = _selectedBook;
+            _selectedBook = (Book)BookAuthorsLv.SelectedItem;
+            BookDetailsGrid.DataContext = _selectedBook;
+
+            if(_selectedBook == null)
+            {
+                BookDetailsGrid.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                BookDetailsGrid.Visibility = Visibility.Visible;
+            }
         }
     }
 }

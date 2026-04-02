@@ -1,4 +1,6 @@
-﻿using System;
+﻿using bookmasterIS34RR.AppData;
+using bookmasterIS34RR.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,12 +28,43 @@ namespace bookmasterIS34RR.View.Windows
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            if (Validate())
+            {
+                Administrator administrator = App.GetContext().Administrators.FirstOrDefault(administrator => administrator.Username == LoginTb.Text && administrator.Password == PasswordPb.Password);
+
+                if (administrator != null) 
+                {
+                    FeedbackService.Information("Успешная авторизация.");
+                    DialogResult = true;
+                }
+                else
+                {
+                    FeedbackService.Error("Пользователь не найден.");
+                }
+            }
+            
+
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private bool Validate()
+        {
+            if (string.IsNullOrWhiteSpace(LoginTb.Text))
+            {
+                FeedbackService.Warning("Введите логин");
+                LoginTb.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(LoginTb.Text))
+            {
+                FeedbackService.Warning("Введите пароль");
+                PasswordPb.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }
