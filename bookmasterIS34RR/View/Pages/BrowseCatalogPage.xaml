@@ -38,14 +38,14 @@
             <Image Grid.ColumnSpan="3" Source="/Resources/logoo.png"/>
 
 
-            <TextBlock Grid.Row="2" Text="Название:"/>
-            <TextBox Grid.Row="2" Grid.Column="2"/>
+            <TextBlock  Grid.Row="2" Text="Название:"/>
+            <TextBox Name="BookTitleTb" Grid.Row="2" Grid.Column="2"/>
 
             <TextBlock Grid.Row="4" Text="Авторы:"/>
-            <TextBox Grid.Row="4" Grid.Column="2"/>
+            <TextBox Name="BookAuthorsTb" Grid.Row="4" Grid.Column="2"/>
 
             <TextBlock Grid.Row="6" Text="Жанры:"/>
-            <TextBox Grid.Row="6" Grid.Column="2"/>
+            <TextBox Name="BookSubjectsTb" Grid.Row="6" Grid.Column="2"/>
 
             <Button Name="SearchBtn" Grid.Row="8" Grid.Column="2"
                     Content="Поиск" Click="SearchBtn_Click"/>
