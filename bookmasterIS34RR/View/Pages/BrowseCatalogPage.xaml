@@ -16,7 +16,11 @@
         </Grid.ColumnDefinitions>
 
         <!--Панель поиска-->
-        <Grid Margin="20" >
+        <Border Background="{DynamicResource Grey}">
+            
+        
+        
+        <Grid Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="10"/>
@@ -38,14 +42,14 @@
             <Image Grid.ColumnSpan="3" Source="/Resources/logoo.png"/>
 
 
-            <TextBlock  Grid.Row="2" Text="Название:"/>
-            <TextBox Name="BookTitleTb" Grid.Row="2" Grid.Column="2"/>
+            <TextBlock Grid.Row="2" Text="Название:"/>
+            <TextBox Grid.Row="2" Grid.Column="2"/>
 
             <TextBlock Grid.Row="4" Text="Авторы:"/>
-            <TextBox Name="BookAuthorsTb" Grid.Row="4" Grid.Column="2"/>
+            <TextBox Grid.Row="4" Grid.Column="2"/>
 
             <TextBlock Grid.Row="6" Text="Жанры:"/>
-            <TextBox Name="BookSubjectsTb" Grid.Row="6" Grid.Column="2"/>
+            <TextBox Grid.Row="6" Grid.Column="2"/>
 
             <Button Name="SearchBtn" Grid.Row="8" Grid.Column="2"
                     Content="Поиск" Click="SearchBtn_Click"/>
@@ -53,7 +57,9 @@
 
         </Grid>
 
-        <Grid Grid.Column="2" Name="SearchResoultsGrid" Visibility="Collapsed" Margin="0 20 20 20">
+        </Border>
+
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="15" />
@@ -88,18 +94,15 @@
             <!-- Изменение размеров гридов-->
 
             <!-- Информация о выбранной книге-->
-            <Grid Grid.Row="2" Name="BookDetailsGrid" Visibility="Collapsed">
+            <Grid Grid.Row="2" Name="BookDetailsGrid">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="249*"/>
-                    <ColumnDefinition Width="729*"/>
-                    <ColumnDefinition Width="61*"/>
-                    <ColumnDefinition Width="151*"/>
+                    <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Текст Информации-->
-                <Grid Grid.ColumnSpan="4" >
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="10"/>
@@ -136,10 +139,8 @@
                     <TextBlock Text="{Binding Subjects}" Grid.Row="14"/>
                 </Grid>
 
-
-
                 <!-- Слайдер изображений-->
-                <Grid Grid.Column="5">
+                <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10"/>

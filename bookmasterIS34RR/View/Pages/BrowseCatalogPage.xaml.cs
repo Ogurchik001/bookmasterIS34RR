@@ -23,74 +23,61 @@ namespace bookmasterIS34RR.View.Pages
     /// </summary>
     public partial class BrowseCatalogPage : Page
     {
-        //Создаем локальный список для единоразового вытягивания данных из таблицы БД
-        private  List<Book> _books;
-        private Book _selectedBook;
 
+        //Создадим список для вытягивания данных из таблиц
+        private readonly List<Book> _bookAuthors;
+
+        private Book _selectedBook;
         public BrowseCatalogPage()
         {
             InitializeComponent();
-            _books=App.GetContext().Books.ToList();
+
+            //Заполняем локальный список
+            _bookAuthors = App.GetContext().Books.ToList();
+
             LoadData();
-           
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
-            SearchResoultsGrid.Visibility = Visibility.Visible;
 
-            string bookTitle = BookTitleTb.Text;
-            string bookAuthors = BookAuthorsTb.Text;
-            string bookSubjects = BookSubjectsTb.Text;
+        }
 
-            if (string.IsNullOrWhiteSpace(bookTitle) &&
-                string.IsNullOrWhiteSpace(bookAuthors) && 
-                string.IsNullOrWhiteSpace(bookSubjects) )  
-            {
-                LoadData(_books);
-            }
-            else 
-            {
+        private void PriviousPageBtn_Click(object sender, RoutedEventArgs e)
+        {
 
-                _books = _books.Where(book => book.Title.Contains(bookTitle, StringComparison.OrdinalIgnoreCase) && book.Authors.Contains(bookTitle, StringComparison.OrdinalIgnoreCase) && book.Subjects.Contains(bookTitle, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
 
-                LoadData(filteredBooks);
-            }
-
-            
+        private void LoadData()
+        {
+            BookAuthorsLv.ItemsSource = _bookAuthors;
         }
 
         private void PreviousPageBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void LoadData(List<Book> bookList)
-        {
-           BookAuthorsLv.ItemsSource = bookList;
-        }
-        private void NextCoverBTN_Click(object sender, RoutedEventArgs e)
+
+        private void NextPageBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BookAuthorsDetailsHl_Click(object sender, RoutedEventArgs e)
-        {
-            BookAuthorsDetailWindow bookAuthorsDetailWindow = new BookAuthorsDetailWindow(_selectedBook.BookAuthors);
-            bookAuthorsDetailWindow.ShowDialog();
-        }
-
-        private void BookAuthorLv_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void BookAutorsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _selectedBook = (Book)BookAuthorsLv.SelectedItem;
-            BookDetailsGrid.DataContext = _selectedBook;
 
-            if(_selectedBook == null)
+            BookDetailsGrid.DataContext = _selectedBook;
+        }
+
+        private void BookAutorsDetailisHl_Click(object sender, RoutedEventArgs e)
+        {
+            if (_selectedBook != null)
             {
-                BookDetailsGrid.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                BookDetailsGrid.Visibility = Visibility.Visible;
+                BookAuthorsDetailWindow bookAuthorsDetailsWindow =
+                    new BookAuthorsDetailWindow(_selectedBook.BookAuthors);
+
+                bookAuthorsDetailsWindow.ShowDialog();
             }
         }
     }

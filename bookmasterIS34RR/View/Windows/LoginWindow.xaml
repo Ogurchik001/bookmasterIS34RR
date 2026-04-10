@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bookmasterIS34RR.View.Windows"
         mc:Ignorable="d"
-        Title="AuthorizationWindow" SizeToContent="Height" Width="500" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0 50" VerticalAlignment="Center" HorizontalAlignment="Center">
+        Title="AuthorizationWindow" SizeToContent="Height" Width="500" WindowStartupLocation="CenterScreen" Background="{DynamicResource Grey}">
+    <Grid Margin="0 50" VerticalAlignment="Center" HorizontalAlignment="Center" >
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="20" />
