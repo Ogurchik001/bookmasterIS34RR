@@ -1,0 +1,86 @@
+﻿<Window x:Class="bookmasterIS36RR.View.Windows.Add_Edit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bookmasterIS36RR.View.Windows"
+        mc:Ignorable="d"
+       Title="Окно авторизации клиента" SizeToContent="Height" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="410"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="410"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="ID:"/>
+            <TextBox Name="IDclientTb" Grid.Column="2" Width="200" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Имя клиента:" Grid.Row="2"/>
+            <TextBox Name="ClientNameTb" Grid.Column="2" Grid.Row="2" Width="200" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Адрес клиента:" Grid.Row="4"/>
+            <TextBox Name="AddressClientTb" Grid.Column="2" Grid.Row="4" Width="200" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Индекс/Город:" Grid.Row="6"/>
+            <TextBox Name="ZipCityTb" Grid.Column="2" Grid.Row="6" Width="50" HorizontalAlignment="Left" /> 
+            
+            <ComboBox Name="ZipCityCmb" Width="140" SelectionChanged="ZipCityCb_SelectionChanged" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right" SelectedIndex="0" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="220"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Номер телефона:" Grid.Row="1"/>
+            <TextBox Name="PhoneCustomerTb" Grid.Column="2" Grid.Row="1" Width="200" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Электронная почта:" Grid.Row="3"/>
+            <TextBox Name="EmailCustomerTb" Grid.Column="2" Grid.Row="3" Width="200" HorizontalAlignment="Left"/>
+
+            <Grid Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Button  Name="SaveBtn" Content="Сохранить" Click="SaveBtn_Click" Width="150" HorizontalAlignment="Left"/>
+                
+                <Button Name="CancelBtn" Grid.Column="2" Content="Отмена" Width="150" HorizontalAlignment="Right" Click="CancelBtn_Click" Cursor="Hand"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

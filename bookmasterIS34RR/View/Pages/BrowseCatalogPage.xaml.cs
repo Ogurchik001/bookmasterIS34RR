@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace bookmasterIS34RR.View.Pages
 {
@@ -40,7 +41,10 @@ namespace bookmasterIS34RR.View.Pages
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            BookAuthorsLv.ItemsSource = _bookAuthors.Where(book => book.Title.ToLower().Contains(NameTb.Text.ToLower()) &&
+                                                           book.Authors.ToLower().Contains(AuthorsTb.Text.ToLower()) &&
+                                                           book.Subjects.ToLower().Contains(SubjectTb.Text.ToLower()))
+                                                           .ToList();
         }
 
         private void PriviousPageBtn_Click(object sender, RoutedEventArgs e)

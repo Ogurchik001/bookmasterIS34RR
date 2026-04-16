@@ -43,13 +43,13 @@
 
 
             <TextBlock Grid.Row="2" Text="Название:"/>
-            <TextBox Grid.Row="2" Grid.Column="2"/>
+            <TextBox Name="NameTb" Grid.Row="2" Grid.Column="2"/>
 
             <TextBlock Grid.Row="4" Text="Авторы:"/>
-            <TextBox Grid.Row="4" Grid.Column="2"/>
+            <TextBox Name="AuthorsTb" Grid.Row="4" Grid.Column="2"/>
 
             <TextBlock Grid.Row="6" Text="Жанры:"/>
-            <TextBox Grid.Row="6" Grid.Column="2"/>
+            <TextBox Name="SubjectTb" Grid.Row="6" Grid.Column="2"/>
 
             <Button Name="SearchBtn" Grid.Row="8" Grid.Column="2"
                     Content="Поиск" Click="SearchBtn_Click"/>
@@ -145,6 +145,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>

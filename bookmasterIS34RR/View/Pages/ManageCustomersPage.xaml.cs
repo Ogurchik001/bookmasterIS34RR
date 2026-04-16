@@ -1,5 +1,8 @@
-﻿using bookmasterIS34RR.Models;
+﻿using bookmasterIS34RR.AppData;
+using bookmasterIS34RR.Models;
 using bookmasterIS34RR.View.Windows;
+using bookmasterIS36RR.View.Windows;
+using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -38,17 +41,33 @@ namespace bookmasterIS34RR.View.Pages
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            CustomerLv.ItemsSource = _Customers.Where(customer => customer.Id.ToLower().Contains(IdCustomerTb.Text.ToLower()) &&
+                                                customer.Name.Contains(NameCutomerTb.Text.ToLower())).ToList();
         }
+        
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Customer? selectedCustomer = CustomerLv.SelectedItem as Customer;
+            if (selectedCustomer!=null)
+            {
+                Add_Edit add_Edit = new Add_Edit();
+                add_Edit.ShowDialog();
+            }
+            else
+            {
+                FeedbackService.Error("Невозможно открыть окно для редактирования читателя. Сначала выберите его из списка.");
+            }
+            
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Add_Edit add_Edit = new Add_Edit();
+           if(add_Edit.ShowDialog() == true)
+            {
+                CustomerLv.ItemsSource = _Customers;
+            }
         }
 
         private void CustomerLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
