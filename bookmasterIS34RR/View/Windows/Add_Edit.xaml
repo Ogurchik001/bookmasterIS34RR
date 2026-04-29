@@ -34,7 +34,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="ID:"/>
-            <TextBox Name="IDclientTb" Grid.Column="2" Width="200"  HorizontalAlignment="Left" IsReadOnly="True"/>
+            <TextBox Name="IDclientTb"  Grid.Column="2" Width="200"  HorizontalAlignment="Left" IsReadOnly="True"/>
 
             <TextBlock Text="Имя клиента:" Grid.Row="2"/>
             <TextBox Name="ClientNameTb" Grid.Column="2" Grid.Row="2" Width="200" HorizontalAlignment="Left" Text="{Binding Name}"/>

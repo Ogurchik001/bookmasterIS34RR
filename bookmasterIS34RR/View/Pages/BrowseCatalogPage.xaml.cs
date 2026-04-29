@@ -47,10 +47,6 @@ namespace bookmasterIS34RR.View.Pages
                                                            .ToList();
         }
 
-        private void PriviousPageBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void LoadData()
         {
@@ -83,6 +79,11 @@ namespace bookmasterIS34RR.View.Pages
 
                 bookAuthorsDetailsWindow.ShowDialog();
             }
+        }
+
+        private void PageNumberTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

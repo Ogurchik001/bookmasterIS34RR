@@ -75,7 +75,52 @@
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="10" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <TextBlock Text="Страница"/>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Name="PreviousPageBTN" Content="&lt;" Click="PreviousPageBtn_Click"/>
+                        <TextBox Name="PageNumberTB" Grid.Column="2" TextChanged="PageNumberTB_TextChanged"/>
+                        <Button Name="NextPageBTN" Grid.Column="4" Content="&gt;"  Click="NextPageBtn_Click"/>
+                    </Grid>
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="из"/>
+                        <TextBlock Grid.Column="2" Name="PageQuantityTBL"/>
+                    </Grid>
+                    <Grid Grid.Column="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="BooksQuantityTBL" Text=""/>
+                        <TextBlock Grid.Column="2" Text="Книг найдено"/>
+                    </Grid>
+                </Grid>
                 <ListView Name="BookAuthorsLv" SelectionChanged="BookAutorsLv_SelectionChanged">
 
                     <!-- Создаем заголовки таблицы-->
