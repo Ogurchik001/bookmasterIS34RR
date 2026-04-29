@@ -34,16 +34,16 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="ID:"/>
-            <TextBox Name="IDclientTb" Grid.Column="2" Width="200" HorizontalAlignment="Left"/>
+            <TextBox Name="IDclientTb" Grid.Column="2" Width="200"  HorizontalAlignment="Left" IsReadOnly="True"/>
 
             <TextBlock Text="Имя клиента:" Grid.Row="2"/>
-            <TextBox Name="ClientNameTb" Grid.Column="2" Grid.Row="2" Width="200" HorizontalAlignment="Left"/>
+            <TextBox Name="ClientNameTb" Grid.Column="2" Grid.Row="2" Width="200" HorizontalAlignment="Left" Text="{Binding Name}"/>
 
             <TextBlock Text="Адрес клиента:" Grid.Row="4"/>
-            <TextBox Name="AddressClientTb" Grid.Column="2" Grid.Row="4" Width="200" HorizontalAlignment="Left"/>
+            <TextBox Name="AddressClientTb" Grid.Column="2" Grid.Row="4" Width="200" HorizontalAlignment="Left" Text="{Binding Address}"/>
 
             <TextBlock Text="Индекс/Город:" Grid.Row="6"/>
-            <TextBox Name="ZipCityTb" Grid.Column="2" Grid.Row="6" Width="50" HorizontalAlignment="Left" /> 
+            <TextBox Name="ZipCityTb" Grid.Column="2" Grid.Row="6" Width="50" Text="{Binding Zip}" HorizontalAlignment="Left" /> 
             
             <ComboBox Name="ZipCityCmb" Width="140" SelectionChanged="ZipCityCb_SelectionChanged" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right" SelectedIndex="0" DisplayMemberPath="Name" SelectedValuePath="Id"/>
 
@@ -65,10 +65,10 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Номер телефона:" Grid.Row="1"/>
-            <TextBox Name="PhoneCustomerTb" Grid.Column="2" Grid.Row="1" Width="200" HorizontalAlignment="Left"/>
+            <TextBox Name="PhoneCustomerTb" Grid.Column="2" Grid.Row="1" Width="200" HorizontalAlignment="Left" Text="{Binding Phone}"/>
 
             <TextBlock Text="Электронная почта:" Grid.Row="3"/>
-            <TextBox Name="EmailCustomerTb" Grid.Column="2" Grid.Row="3" Width="200" HorizontalAlignment="Left"/>
+            <TextBox Name="EmailCustomerTb" Grid.Column="2" Grid.Row="3" Width="200" HorizontalAlignment="Left" Text="{Binding Email}"/>
 
             <Grid Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Right">
                 <Grid.ColumnDefinitions>
@@ -76,8 +76,9 @@
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
-                <Button  Name="SaveBtn" Content="Сохранить" Click="SaveBtn_Click" Width="150" HorizontalAlignment="Left"/>
-                
+                <Button  Name="EditBtn" Content="Сохранить" Click="EditBtn_Click" Width="150" HorizontalAlignment="Left"/>
+                <Button  Name="AddBtn" Click="AddBtn_Click"  Width="150" HorizontalAlignment="Left" Content="Добавить"/>
+
                 <Button Name="CancelBtn" Grid.Column="2" Content="Отмена" Width="150" HorizontalAlignment="Right" Click="CancelBtn_Click" Cursor="Hand"/>
             </Grid>
         </Grid>

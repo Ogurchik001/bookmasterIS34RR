@@ -29,9 +29,31 @@ namespace bookmasterIS36RR.View.Windows
         {
             InitializeComponent();
             _cities = App.GetContext().Cities.ToList();
+
+            LoadCities();
+
+            Title = "Добавление читателя";
+            EditBtn.Visibility = Visibility.Collapsed;
+            AddBtn.Visibility = Visibility.Visible;
+
+
+            IDclientTb.Text = GenerateID();
+
+        }
+        public Add_Edit(Customer selectedCustomer)
+        {
+            InitializeComponent();
+            
+            _cities = App.GetContext().Cities.ToList();
+            Title = "Редактирование читателя";
+            EditBtn.Visibility = Visibility.Visible;
+            AddBtn.Visibility = Visibility.Collapsed;
+            IDclientTb.Text = selectedCustomer.Id;
+            DataContext = selectedCustomer;
+            
             LoadCities();
         }
-       
+
 
 
         private void ZipCityCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,20 +63,17 @@ namespace bookmasterIS36RR.View.Windows
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            DialogResult = false;
         }
 
-        private void SaveBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-            AddCustomer();
-        }
+       
 
         private void AddCustomer()
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(ClientNameTb.Text) ||
+                if (string.IsNullOrWhiteSpace(IDclientTb.Text)||
+                    string.IsNullOrWhiteSpace(ClientNameTb.Text) ||
                 string.IsNullOrWhiteSpace(AddressClientTb.Text) ||
                 string.IsNullOrWhiteSpace(PhoneCustomerTb.Text)||
                 string.IsNullOrWhiteSpace(EmailCustomerTb.Text))
@@ -66,18 +85,20 @@ namespace bookmasterIS36RR.View.Windows
                     {
                         Customer newCustomer = new Customer()
                         {
-                            
-                            Name= ClientNameTb.Text,
+                            Id = IDclientTb.Text,
+                            Name = ClientNameTb.Text,
                             Address = AddressClientTb.Text,
-                            Phone= PhoneCustomerTb.Text,
+                            Phone = PhoneCustomerTb.Text,
                             Email = EmailCustomerTb.Text,
                             Zip = ZipCityTb.Text,
                             CityId = Convert.ToInt32(ZipCityCmb.SelectedValue)
                         };
                         App.GetContext().Customers.Add(newCustomer);
-                        FeedbackService.Information("Пользователь успешно создан");
-                        Close();
                         App.GetContext().SaveChanges();
+                        FeedbackService.Information("Пользователь успешно создан");
+                        DialogResult = true;
+                        Close();
+                        
                         
                         
                         
@@ -98,8 +119,35 @@ namespace bookmasterIS36RR.View.Windows
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            FeedbackService.Information("Изменения успешно сохранены");
-            App.GetContext().SaveChanges();
+            EditCustomer();
+          
+        }
+        private void EditCustomer()
+        {
+            try
+            {
+
+                App.GetContext().SaveChanges();
+                FeedbackService.Information("Данные читателя успешно изменены!");
+            }
+            catch (Exception ex)
+            {
+                FeedbackService.Error(ex);
+            }
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddCustomer();
+        }
+        private string GenerateID()
+        {
+            int lastId = Convert.ToInt32(App.GetContext().Customers.Max(x => x.Id).Substring(1));
+            ++lastId;
+
+
+
+            return $"C{lastId}";
         }
     }
 }

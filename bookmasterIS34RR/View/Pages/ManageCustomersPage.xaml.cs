@@ -27,7 +27,7 @@ namespace bookmasterIS34RR.View.Pages
     public partial class ManageCustomersPage : Page
     {
 
-        private readonly List<Customer> _Customers;
+        private  List<Customer> _Customers;
 
         private Customer _selectedCustomer;
         public ManageCustomersPage()
@@ -42,7 +42,7 @@ namespace bookmasterIS34RR.View.Pages
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             CustomerLv.ItemsSource = _Customers.Where(customer => customer.Id.ToLower().Contains(IdCustomerTb.Text.ToLower()) &&
-                                                customer.Name.Contains(NameCutomerTb.Text.ToLower())).ToList();
+                                                customer.Name.ToLower().Contains(NameCutomerTb.Text.ToLower())).ToList();
         }
         
 
@@ -51,12 +51,16 @@ namespace bookmasterIS34RR.View.Pages
             Customer? selectedCustomer = CustomerLv.SelectedItem as Customer;
             if (selectedCustomer!=null)
             {
-                Add_Edit add_Edit = new Add_Edit();
+                Add_Edit add_Edit = new Add_Edit(selectedCustomer);
                 add_Edit.ShowDialog();
+                CustomerLv.ItemsSource = _Customers = App.GetContext().Customers.ToList();
+
             }
             else
             {
                 FeedbackService.Error("Невозможно открыть окно для редактирования читателя. Сначала выберите его из списка.");
+
+
             }
             
         }
@@ -66,7 +70,7 @@ namespace bookmasterIS34RR.View.Pages
             Add_Edit add_Edit = new Add_Edit();
            if(add_Edit.ShowDialog() == true)
             {
-                CustomerLv.ItemsSource = _Customers;
+                CustomerLv.ItemsSource = _Customers = App.GetContext().Customers.ToList();
             }
         }
 

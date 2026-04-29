@@ -42,8 +42,8 @@ namespace bookmasterIS34RR
         private void LogoutMI_Click(object sender, RoutedEventArgs e)
         {
             LibraryMI.Visibility = Visibility.Collapsed;
-            LoginMI.Visibility = Visibility.Collapsed;
-            LogoutMI.Visibility = Visibility.Visible;
+            LoginMI.Visibility = Visibility.Visible;
+            LogoutMI.Visibility = Visibility.Collapsed;
         }
 
         private void CloseMI_Click(object sender, RoutedEventArgs e)
