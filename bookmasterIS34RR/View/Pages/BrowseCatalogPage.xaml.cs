@@ -1,4 +1,5 @@
-﻿using bookmasterIS34RR.Models;
+﻿using bookmasterIS34RR.AppData;
+using bookmasterIS34RR.Models;
 using bookmasterIS34RR.View.Windows;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
@@ -25,18 +26,21 @@ namespace bookmasterIS34RR.View.Pages
     public partial class BrowseCatalogPage : Page
     {
 
+
         //Создадим список для вытягивания данных из таблиц
         private readonly List<Book> _bookAuthors;
 
         private Book _selectedBook;
+
+        private readonly PaginationController _paginationController= new();
         public BrowseCatalogPage()
         {
             InitializeComponent();
 
-            //Заполняем локальный список
-            _bookAuthors = App.GetContext().Books.ToList();
+            //Загружаем в контроллер пагинации список книг
+            _paginationController.Load(App.GetContext().Books.ToList());
 
-            LoadData();
+            RefreshUI();
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
@@ -45,22 +49,22 @@ namespace bookmasterIS34RR.View.Pages
                                                            book.Authors.ToLower().Contains(AuthorsTb.Text.ToLower()) &&
                                                            book.Subjects.ToLower().Contains(SubjectTb.Text.ToLower()))
                                                            .ToList();
+            RefreshUI();
         }
 
 
-        private void LoadData()
-        {
-            BookAuthorsLv.ItemsSource = _bookAuthors;
-        }
+       
 
         private void PreviousPageBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            _paginationController.GoToPage(_paginationController.CurrentPage - 1);
+            RefreshUI();
         }
 
         private void NextPageBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            _paginationController.GoToPage(_paginationController.CurrentPage +1);
+            RefreshUI();
         }
 
         private void BookAutorsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -85,5 +89,17 @@ namespace bookmasterIS34RR.View.Pages
         {
 
         }
+
+        public void RefreshUI()
+        {
+            BookAuthorsLv.ItemsSource = _paginationController.GetCurrentPage();
+            BooksQuantityTBL.Text = $"{_paginationController.BookCount}";
+            PageQuantityTBL.Text = $"{_paginationController.TotalPages}";
+            PageNumberTB.Text=_paginationController.CurrentPage.ToString();
+
+            PreviousPageBTN.IsEnabled = _paginationController.CanGoPrevious;
+            NextPageBTN.IsEnabled=_paginationController.CanGoNext;
+        }
     }
+
 }

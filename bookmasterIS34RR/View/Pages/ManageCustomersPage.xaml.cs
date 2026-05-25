@@ -41,9 +41,17 @@ namespace bookmasterIS34RR.View.Pages
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
-            CustomerLv.ItemsSource = _Customers.Where(customer => customer.Id.ToLower().Contains(IdCustomerTb.Text.ToLower()) &&
-                                                customer.Name.ToLower().Contains(NameCutomerTb.Text.ToLower())).ToList();
-        }
+            if (NameCutomerTb.Text != null || IdCustomerTb.Text != null)
+            {
+                CustomerLv.ItemsSource = _Customers.Where(customer => customer.Id.ToLower().Contains(IdCustomerTb.Text.ToLower()) &&
+                                                    customer.Name.ToLower().Contains(NameCutomerTb.Text.ToLower())).ToList();
+            }
+            else 
+            {
+                FeedbackService.Error("Заполните хотя бы одно поле");
+            }
+
+            }
         
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
