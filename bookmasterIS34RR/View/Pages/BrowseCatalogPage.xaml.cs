@@ -87,7 +87,11 @@ namespace bookmasterIS34RR.View.Pages
 
         private void PageNumberTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (int.TryParse(PageNumberTB.Text,out int page))
+            {
+                _paginationController.CurrentPage = page;
+                RefreshUI();
+            }
         }
 
         public void RefreshUI()
